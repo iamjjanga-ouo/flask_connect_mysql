@@ -1,13 +1,15 @@
 from flask import Flask, render_template
 import pymysql
 import os
+from dotenv import load_dotenv
 
 application = Flask(__name__)
 
+load_dotenv(verbose=True)
 
-db = pymysql.connect( host=os.environ.get('MYSQL_ADDRESS'), 
+db = pymysql.connect( host=os.environ.get('DATABASE_URL'), 
                         user="admin", 
-                        passwd=os.environ.get('MYSQL_ADMIN_PASSWORD'), 
+                        passwd=os.environ.get('DATABASE_PASS'), 
                         db="free_board", 
                         charset="utf8")
 
